@@ -1,0 +1,29 @@
+import yfinance as yf
+import pandas as pd
+import pandas_ta as ta
+
+
+AAPL_data = yf.download('AAPL')
+
+##This function will be used if we need to read an external file
+def reaFile(textFile):
+
+    with open(path_to_file) as f:
+        
+        while True:
+            line = f.readline()
+            if not line:
+                break
+            return line.strip()
+
+def macdCalc(data, f, sl, si):
+
+    df = yf.Ticker(data).history(period='1y')[['Close', 'Open', 'High', 'Volume', 'Low']]
+
+    df.ta.macd(close='close', fast=f, slow=sl, signal=si, append=True)
+
+    pd.set_option("display.max_columns", None)  
+    print(df)
+
+##test code
+macdCalc('AAPL', 12, 26, 9)
