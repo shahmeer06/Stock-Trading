@@ -6,7 +6,7 @@ import pandas_ta as ta
 AAPL_data = yf.download('AAPL')
 
 ##This function will be used if we need to read an external file
-def reaFile(textFile):
+def readFile(textFile):
 
     with open(path_to_file) as f:
         
